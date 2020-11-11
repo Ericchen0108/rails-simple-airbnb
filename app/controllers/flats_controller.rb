@@ -1,12 +1,11 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: [:show, :edit, :update, :destroy]
+  before_action :set_flat, only: %i[show edit update destroy]
 
   def index
     @flats = Flat.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @flat = Flat.new
@@ -21,8 +20,7 @@ class FlatsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @flat.update(flat_params)
@@ -37,7 +35,7 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:name, :description, :address, :price_per_night, :number_of_guests)
+    params.require(:flat).permit(:name, :description, :address, :price_per_night, :number_of_guests, :picture_url)
   end
 
   def set_flat
